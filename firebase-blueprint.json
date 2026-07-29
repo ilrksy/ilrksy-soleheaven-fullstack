@@ -1,0 +1,136 @@
+{
+  "entities": {
+    "users": {
+      "title": "UserProfile",
+      "description": "User profiles storing buyer/seller states, USDT balances, wishlist/cart, and subscriptions",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" },
+        "balance": { "type": "number" },
+        "walletAddress": { "type": "string" },
+        "bio": { "type": "string" },
+        "subscribedSellerUids": { "type": "array" },
+        "subscriptionPrice": { "type": "number" },
+        "wishlistIds": { "type": "array" },
+        "cartIds": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["uid", "email", "displayName", "role", "balance", "createdAt"]
+    },
+    "listings": {
+      "title": "Listing",
+      "description": "Foot photos and videos published for sale with crypto prices and stock levels",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "originalUrl": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "mediaType": { "type": "string", "enum": ["image", "video"] },
+        "sellerName": { "type": "string" },
+        "sellerAvatar": { "type": "string" },
+        "sellerUid": { "type": "string" },
+        "likes": { "type": "number" },
+        "salesCount": { "type": "number" },
+        "views": { "type": "number" },
+        "stockCount": { "type": "number" },
+        "isSubscriberOnly": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "description", "price", "category", "imageUrl", "originalUrl", "mediaType", "sellerName", "sellerUid", "createdAt"]
+    },
+    "orders": {
+      "title": "Order",
+      "description": "History of individual media purchases with crypto",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "buyerId": { "type": "string" },
+        "listingId": { "type": "string" },
+        "price": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "buyerId", "listingId", "price", "createdAt"]
+    },
+    "customRequests": {
+      "title": "CustomRequest",
+      "description": "Custom foot commissions with pricing offers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderEmail": { "type": "string" },
+        "footAngle": { "type": "string" },
+        "accessory": { "type": "string" },
+        "additionalInstructions": { "type": "string" },
+        "priceOffer": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "declined", "completed"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "senderId", "senderName", "senderEmail", "footAngle", "additionalInstructions", "priceOffer", "status", "createdAt"]
+    },
+    "chats": {
+      "title": "Chat",
+      "description": "Conversation threads between buyers and sellers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "buyerUid": { "type": "string" },
+        "buyerName": { "type": "string" },
+        "sellerUid": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "lastMessage": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "buyerUid", "buyerName", "sellerUid", "sellerName", "lastMessage", "updatedAt"]
+    },
+    "messages": {
+      "title": "Message",
+      "description": "Individual direct messages in a chat thread",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "chatId": { "type": "string" },
+        "senderUid": { "type": "string" },
+        "senderName": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "chatId", "senderUid", "senderName", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "Private and public user profile details"
+    },
+    "/listings/{listingId}": {
+      "schema": "listings",
+      "description": "Media listings available for buy or view"
+    },
+    "/orders/{orderId}": {
+      "schema": "orders",
+      "description": "Crypto transactions history"
+    },
+    "/customRequests/{requestId}": {
+      "schema": "customRequests",
+      "description": "Bespoke commission details"
+    },
+    "/chats/{chatId}": {
+      "schema": "chats",
+      "description": "Chat sessions details"
+    },
+    "/chats/{chatId}/messages/{messageId}": {
+      "schema": "messages",
+      "description": "Individual messages inside a chat room"
+    }
+  }
+}

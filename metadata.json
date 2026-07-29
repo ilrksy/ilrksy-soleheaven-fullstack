@@ -1,0 +1,6 @@
+{
+  "name": "SoleHaven - Galeri Foto Kaki Premium",
+  "description": "Platform e-commerce premium untuk menjelajah, membeli, dan mengoleksi karya seni fotografi kaki berkualitas tinggi dan estetik.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Syne", "Georgia", serif;
+  --font-serif: "Syne", "Georgia", serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #09090b;
+  color: #f4f4f5;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+/* Luxury hairline borders & subtle shadows */
+.border-subtle {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Custom subtle noise texture overlay if needed */
+.bg-matte-dark {
+  background-color: #09090b;
+}
+
+.bg-card-dark {
+  background-color: #121215;
+}
+
